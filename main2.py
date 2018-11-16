@@ -5,8 +5,8 @@ import numpy as np
 import classification
 
 if __name__ == '__main__':
-    train = rmt.cancer.get_train_data()
-    test = rmt.cancer.get_test_data()
+    train = rmt.iris.get_train_data()
+    test = rmt.iris.get_test_data()
 
     X = train.drop('target', axis=1)
     X = np.hstack((np.ones((X.shape[0], 1)), X))

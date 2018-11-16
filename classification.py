@@ -7,17 +7,6 @@ def logistic(x, w):
     return y
 
 
-def cee_logistic(w, x, t):
-    X_n = x.shape[0]
-    y = logistic(x, w)
-    cee = 0
-    for n in range(len(y)):
-        cee = cee - (t.loc[n] * np.log(y[n]) +
-                     (1 - t.loc[n]) * np.log(1 - y[n]))
-    cee = cee / X_n
-    return cee
-
-
 def dcee_logistic(w, x, t, dcee):
     X_n = x.shape[0]
     y = logistic(x, w)
@@ -29,9 +18,9 @@ def dcee_logistic(w, x, t, dcee):
 
 
 def ﬁt(w, x, t):
-    alpha = 0.1  # 学習率
-    i_max = 100000  # 繰り返しの最大数
-    eps = 0.0001  # 繰り返しをやめる勾配の絶対値のしきい値
+    alpha = 0.1
+    i_max = 100000
+    eps = 0.0001
 
     dcee = np.zeros(x.shape[1]).reshape((x.shape[1], 1))
 
@@ -43,3 +32,10 @@ def ﬁt(w, x, t):
             break
 
     return w, dmse
+
+
+def sigmoid(w, x):
+    y = np.exp(-(x.dot(w.T)))
+    wk = np.sum(y, axis=1)
+    y = y.T / wk
+    return y.T
