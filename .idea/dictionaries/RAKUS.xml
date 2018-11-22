@@ -3,6 +3,10 @@
     <words>
       <w>dcee</w>
       <w>dmse</w>
+      <w>softmax</w>
+      <w>xmean</w>
+      <w>xstd</w>
+      <w>zscore</w>
     </words>
   </dictionary>
 </component>
